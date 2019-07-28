@@ -9,6 +9,14 @@ public class SceneLoader : MonoBehaviour
     public void LoadNextScene()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex+1);
+        int sceneCount = SceneManager.sceneCountInBuildSettings;
+
+        SceneManager.LoadScene(currentSceneIndex + 1 >= sceneCount ? 0 : currentSceneIndex + 1);
     }
+
+    public void LoadStartScene()
+    {
+        SceneManager.LoadScene(0);
+    }
+
 }
